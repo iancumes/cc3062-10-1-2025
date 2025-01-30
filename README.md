@@ -22,6 +22,13 @@ Durante el curso utilizaremos:
 - **Python**: Para la implementación de servidores HTTP simples ([Sitio oficial](https://python.org/)).
 - **Git**: Sistema de control de versiones para colaborar y gestionar el código del curso ([Sitio oficial](https://git-scm.com/)).
 
+## Presentaciones
+Puedes acceder a las presentaciones de la sección aquí:
+- [01. Internet antes de la Web](https://menene.github.io/cc3062/01-internet-antes-web.html)
+- [02. Fundamentos de redes](https://menene.github.io/cc3062/02-fundamentos-redes.html)
+- [03. Comandos CLI Básicos](https://menene.github.io/cc3062/03-comandos-cli.html)
+- [04. HTML](https://menene.github.io/cc3062/04-html.html)
+
 
 ## Cómo Usar Este Repositorio
 
@@ -29,7 +36,7 @@ Durante el curso utilizaremos:
    - Clonar el repositorio localmente:
 
      ```bash
-     git clone https://github.com/menene/cc2005-170-1-2025
+     git clone https://github.com/menene/cc3062-10-1-2025
      ```
    - Navegar a la carpeta del tema correspondiente.
    - Abrir los archivos en tu editor de código favorito.
