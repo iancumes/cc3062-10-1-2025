@@ -1,0 +1,18 @@
+body {
+    background-color: #d5d5d5;
+}
+
+h1 {
+    color: aqua; 
+    font-size: 35px;
+}
+
+.parrafo {
+    color: red; 
+    font-size: 18px;
+}
+
+.importante {
+    color: green; 
+    background-color: yellow;
+}
