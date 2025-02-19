@@ -3,9 +3,9 @@
         transform: translateX(-100%);
     }
     to {
-        transform: translateX(0);
+        transform: translateX(50%);
     }
 }
 .animated-box {
-    animation: slide-in 1s ease-in-out;
+    animation: slide-in 10s ease-in-out;
 }

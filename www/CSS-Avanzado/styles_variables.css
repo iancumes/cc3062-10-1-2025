@@ -1,6 +1,10 @@
+/* VARIABLES */
 :root {
-    --main-color: blue;
+    --main-color: #d5d5d5;
 }
+
+
+/* STYLE */
 h1 {
     color: var(--main-color);
 }
