@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UVG Login</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="login-container">
+        <h1>🔐 UVG Login</h1>
+
+        <input type="text" id="username" placeholder="Ingresa tu usuario">
+        
+        <input type="password" id="password" placeholder="Ingresa tu contraseña">
+
+        <button onclick="showPassword()">Toggle Contraseña</button>
+        <button onclick="login()">Ingresar</button>
+
+        <p id="message" class="message"></p>
+    </div>
+
+    <script>
+        if (localStorage.getItem("unauthorized")) {
+            document.getElementById("message").innerHTML = localStorage.getItem("unauthorized");
+            localStorage.removeItem("unauthorized");
+        }
+
+        const users = [
+            {username: "admin", password: "secret"}
+        ];
+
+        function showPassword() {
+            const pwd = document.getElementById('password');
+
+            if (pwd.type === "password") {
+                pwd.type = 'text';
+            } else {
+                pwd.type = 'password';
+            }
+        }
+
+        function login() {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            const user = users.find(u => u.username === username && u.password === password);
+
+            if (!user) {
+                document.getElementById("message").innerHTML = "Usuario o clave inválida";
+            } else {
+                localStorage.setItem("logged_username", username);
+                window.location.href = "dashboard.html";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UVG Tasks</title>
+
+    <!-- estilo -->
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            margin: 40px;
+            background-color: #d5d5d5;
+        }
+
+        #taskContainer {
+            max-width: 400px;
+            margin: auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0, 0.45);
+        }
+
+        input {
+            width: 70%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px;
+            border: 1px solid #28a745;
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #218838;
+            border: 1px solid #218838;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: #eee;
+            margin: 10px 0;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        li:hover {
+            background-color: #d5d5d5;
+        }
+
+        .deleteBtn {
+            background-color: red;
+            border: 1px solid red;
+        }
+
+        .deleteBtn:hover {
+            background-color: darkred;
+            border: 1px solid darkred;
+        }
+
+        .completed {
+            text-decoration: line-through;
+            font-style: italic;
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+    <!-- contenido -->
+    <div id="taskContainer">
+        <h1>UVG Tasks</h1>
+
+        <input id="taskInput" type="text" placeholder="Ingresa tu tarea...">
+
+        <button onclick="addTask()">Agregar</button>
+
+        <ul id="taskList"></ul>
+    </div>
+
+    <!-- js -->
+    <script>
+        function addTask() {
+            const taskInput = document.getElementById("taskInput");
+            const taskValue = taskInput.value;
+
+            if (taskValue === "") {
+                alert("Es necesario agregar una tarea!");
+                return;
+            }
+
+            const li = document.createElement('li');
+            li.innerHTML = `
+                <span>${taskValue}</span>
+                <button class="deleteBtn" onclick="deleteTask(this)">X</button>
+            `;
+
+            li.addEventListener("click", () => completeTask(li));
+
+            document.getElementById("taskList").appendChild(li);
+
+            taskInput.value = "";
+        }
+
+        function completeTask(task) {
+            task.classList.toggle("completed")
+        }
+
+        function deleteTask(btn) {
+            if (confirm("¿Estas seguro que quieres borrar esta tarea?")) {
+                btn.parentElement.remove()
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intro a JS</title>
+    <style>
+        .text {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="mensaje">Este es un H1</h1>
+    <!-- <ul>
+        <li class="text">Uno</li>
+        <li class="text">Dos</li>
+        <li class="text">Tres</li>
+    </ul> -->
+
+    <!-- <input type="password" id="texto"> -->
+
+    <input type="text" id="texto">
+    <button id="btn">Click me!</button>
+
+    <script>
+        // console.log("hello world");
+        // alert("hola mundo");
+
+        // let nombre = "Ana";
+        // let edad = 30;
+
+        // console.log(`Hola, ${nombre}. Tienes ${edad} años.`);
+
+        // nombre = "Erick";
+        // edad = 18;
+
+        // console.log(`Hola, ${nombre}. Tienes ${edad} años.`);
+
+        // console.log(saludar("Juan"));
+
+        // function saludar(nombre) {
+        //     return `Hola, ${nombre}!`;
+        // }
+
+        // console.log("Inicio");
+
+        // setTimeout(() => {
+        //     console.log("Esto aparece después de 2 segundos");
+        // }, 2000);
+
+        // console.log("Fin");
+
+        // console.log(document.title);
+
+        // const el = document.getElementById("mensaje");
+        // console.log(el);
+
+        // let elemento = document.querySelector("h1");
+        // console.log(elemento.textContent);
+        // console.log(elemento);
+
+        // elemento.textContent = "Otro texto";
+
+        // let elementos = document.querySelectorAll(".text");
+        // elementos.forEach(el => {
+        //     console.log(el.textContent);
+        //     alert(el.textContent);
+        // });
+
+        // let nuevoParrafo = document.createElement("p");
+        // nuevoParrafo.textContent = "Párrafo agregado con JavaScript.";
+        // document.body.appendChild(nuevoParrafo);
+
+        // let titulo = document.querySelector("h1");
+        // titulo.style.color = "blue";
+
+        document.getElementById("btn").addEventListener("click", function() {
+            // alert("¡Botón clickeado!");
+
+            // obtener elemento que tiene el texto
+            const el = document.getElementById("texto");
+            if (el.value != "") {
+                const el2 = document.getElementById("mensaje");
+                el2.textContent = "Hola " + el.value + "!";
+                el.value = "";
+            } else {
+                alert("Te dije que pusieras tu nombre!!! Avivate Chavo...");
+            }
+            
+            // a casa
+        });
+
+        // document.getElementById("mensaje").addEventListener("mouseover", function() {
+        //     alert("Mensaje clickeado!");
+        // });
+        
+        // document.getElementById("texto").addEventListener("keydown", function() {
+        //     // alert('Tecla apachada');
+        //     const elemt = document.getElementById('texto');
+        //     console.log(elemt.value)
+        // });
+    </script>
+</body>
+</html>
