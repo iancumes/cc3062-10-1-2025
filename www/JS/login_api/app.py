@@ -5,9 +5,18 @@ import sqlite3
 import bcrypt
 import os
 
+
 DATABASE = "./data/users.db"
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 class User(BaseModel):
@@ -66,9 +75,32 @@ def register(usr: User):
     except sqlite3.IntegrityError:
         conn.close()
         raise HTTPException(
-            status_code=409, detail="Ususario ya existe en la base de datos"
+            status_code=409,
+            detail="No fué posible registrarte, intentalo más tarde o con otra cuenta.",
         )
 
     conn.close()
 
     return {"message": "Usuario registrado exitosamente"}
+
+
+@app.post("/login")
+def login(usr: User):
+    conn = get_db()
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT password FROM users WHERE username = ?", (usr.username,))
+
+    row = cursor.fetchone()
+
+    conn.close()
+
+    if row is None:
+        raise HTTPException(status_code=401, detail="Usuario incorrecto")
+
+    stored_pasword = row["password"]
+
+    if not bcrypt.checkpw(usr.password.encode("utf-8"), stored_pasword.encode("utf-8")):
+        raise HTTPException(status_code=401, detail="Usuario incorrecto")
+
+    return {"success": True, "message": "Usuario autenticado exitosamente"}
