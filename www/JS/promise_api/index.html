@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deconstrucción</title>
+</head>
+<body>
+    <script>
+        // const usuario = { nombre: "Juan", edad: 25, pais: "España" };
+
+        // const { nombre, edad } = usuario;
+
+        // console.log(nombre);
+        // console.log(edad);
+        // console.log(usuario);
+
+        // ---
+
+        // function mostrarUsuario({ nombre, pais }) {
+        //     console.log(`Nombre: ${nombre}, País: ${pais}`);
+        // }
+
+        // const persona = { nombre: "Ana", edad: 30, pais: "México" };
+        
+        // mostrarUsuario(persona);
+
+        // ---
+
+        // const producto = { nombre: "Laptop", precio: 1000 };
+
+        // const { nombre, stock = 0 } = producto;
+
+        // console.log(stock);
+
+        // ---
+        
+        // const usuario = { nombre: "Pedro", edad: 22 };
+
+        // const { nombre: nombreUsuario, edad: edadUsuario } = usuario;
+        // // const nombreUsuario = usuario.nombre;
+        // // const edadUsuario = usuario.edad;
+
+        // console.log(nombreUsuario, edadUsuario);
+
+        // ---
+
+        // const colores = ["Rojo", "Verde", "Azul"];
+        
+        // const [primerColor, segundoColor] = colores;
+
+        // console.log(primerColor, segundoColor);
+
+        // ---
+
+        // const numeros = [1, 2, 3, 4, 5];
+
+        // const [primero, , tercero] = numeros;
+
+        // console.log(primero, tercero);
+
+        // ---
+
+        async function obtenerPokemon() {
+            const response = await fetch('https://pokeapi.co/api/v2/pokemon/');
+            const data = await response.json();
+            
+            const {name, url} = data.results[0];
+
+            console.log(`Nombre: ${name}, URL: ${url}`);
+        }
+
+        obtenerPokemon();
+    </script>
+</body>
+</html>
