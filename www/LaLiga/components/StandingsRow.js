@@ -2,23 +2,27 @@
 const StandingsRow = (item) => {
 
     return `
-        <tr>
+        <tr class="${item.rowClass}">
             <td>${item.rank}</td>
             <td>
-                <img src="${item.team.logo}" width="50px" />
+                <img src="${item.logo}" width="50px" />
             </td>
-            <td>${item.team.name}</td>
+            <td>
+                <a href="/cc3062-10/www/LaLiga/#teams?id=${item.id}">
+                    ${item.name}
+                </a>
+            </td>
             <td>${item.points}</td>
-            <td>${item.all.played}</td>
-            <td>${item.all.win}</td>
-            <td>${item.all.draw}</td>
-            <td>${item.all.lose}</td>
-            <td>${item.all.goals.for}</td>
-            <td>${item.all.goals.against}</td>
+            <td>${item.played}</td>
+            <td>${item.win}</td>
+            <td>${item.draw}</td>
+            <td>${item.lose}</td>
+            <td>${item.forGoals}</td>
+            <td>${item.againstGoals}</td>
             <td>${item.goalsDiff}</td>
+            <td>${item.efficiency}</td>
         </tr>
     `;
-
 }
 
 export default StandingsRow;
