@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+        function Pokemon(props) {
+            const [pokemones, setPokemones] = React.useState([]);
+            const [loading, setLoading] = React.useState(true);
+
+            async function pokeApi() {
+                const listado = await fetch('https://pokeapi.co/api/v2/pokemon?limit=10&offset=0');
+                const listadoJson = await listado.json();
+
+                setTimeout(() => {
+                    setPokemones(listadoJson.results);
+                    setLoading(false);
+                }, 2000);
+            }
+
+            React.useEffect(() => {
+                pokeApi();
+            }, []);
+
+            return <div>
+                <h1>Pokedex</h1>
+
+                {
+                    loading ? (
+                        <div>
+                            <h3><i className="fa-solid fa-spinner fa-spin"></i></h3>
+                            <p>Cargando...</p>
+                        </div>
+                    ) : (
+                        <ul>
+                            {
+                                pokemones.map((pokemon, i) => {
+                                    return <li key={i}>{pokemon.name}</li>
+                                })
+                            }
+                        </ul>
+                    )
+                }
+
+                
+            </div>
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+
+        root.render(<Pokemon />);
+    </script>
+
+</body>
+
+</html>

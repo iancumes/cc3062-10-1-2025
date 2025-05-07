@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/javascript">
+        const HelloWorldComponent = React.createElement('h1', null, "Hello World");
+
+        const pComponent = React.createElement('p', null, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec rutrum eros. Vivamus cursus quis tortor sit amet condimentum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae");
+
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+
+        root.render(pComponent);
+    </script>
+
+</body>
+
+</html>

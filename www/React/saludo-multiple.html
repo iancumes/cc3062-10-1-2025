@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        .red {
+            color: red;
+        }
+
+        .blue {
+            color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+        function Saludo({ message, name, color}) {
+            return <li className={color}>{message} {name}!</li>;
+        }
+
+        function App(props) {
+            return <ul>
+                <Saludo  name="Erick" color="red" message="Hola" />
+                <Saludo message="Adiós" name="María" color="blue" />
+            </ul>
+        }
+
+        // const nombre = "Nico";
+        // root.render(<Saludo message="Salite" name={nombre} />)
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+
+        root.render(<App />);
+    </script>
+
+</body>
+
+</html>

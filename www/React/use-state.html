@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+        function Contador(props) {
+            // const [contador, setContador] = React.useState(function () {
+            //     return props.valor * 2;
+            // });
+
+            const [contador, setContador] = React.useState(0);
+
+            const incrementar = () => {
+                setContador(contador + 1);
+            }
+
+            const decrementar = () => {
+                setContador(contador - 1);
+            }
+
+            const resetear = () => {
+                if (confirm("Seguro?") === true) {
+                    setContador(0);    
+                }   
+            }
+
+            return <div>
+                <h1>{contador}</h1>
+                <button onClick={incrementar}>Sumar</button>
+                <button onClick={decrementar}>Restar</button>
+                <button onClick={resetear}>Reiniciar</button>
+            </div>
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+
+        root.render(<Contador />);
+    </script>
+
+</body>
+
+</html>

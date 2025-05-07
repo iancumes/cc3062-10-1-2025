@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+        function TableRow({product}) {
+            const [cantidad, setCantidad] = React.useState(product.quantity);
+            const [subtotal, setSubtotal] = React.useState(product.quantity * product.price);
+
+            const subTotal = (event) => {
+                setCantidad(event.target.value);
+                setSubtotal(event.target.value * product.price);
+            }
+
+            return <tr key={product.id}>
+                <td>{product.name}</td>
+                <td>Q{product.price}</td>
+                <td>
+                    <input type="number" value={cantidad} onChange={subTotal} />
+                </td>
+                <td>Q{subtotal}</td>
+            </tr>
+        }
+
+        function Table({products}) {
+            return <table border="1">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th>Sub total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        products.map((product) => 
+                            <TableRow key={product.id} product={product} />
+                        )
+                    }
+                </tbody>
+            </table>
+        }
+        
+        function App(props) {
+            const products = [
+                {id: 1, name:"Agua Pura", price: 10, quantity: 2},
+                {id: 2, name:"Coca Cola", price: 15, quantity: 1},
+                {id: 3, name:"Pizza", price: 100, quantity: 1},
+                {id: 4, name:"Hamburguesa", price: 25, quantity: 1},
+            ];
+
+            return <div>
+                <h1>Carreta</h1>
+                <Table products={products} />
+            </div>
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+
+        root.render(<App />);
+    </script>
+
+</body>
+
+</html>
